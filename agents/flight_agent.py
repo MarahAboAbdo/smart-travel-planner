@@ -2,6 +2,12 @@ import os
 from crewai import Agent
 from crewai.llm import LLM
 from dotenv import load_dotenv
+import litellm
+
+litellm.drop_params = True
+
+import crewai.llms.cache as crewai_cache
+crewai_cache.mark_cache_breakpoint = lambda msg: msg
 
 # Load environment variables from .env file (includes the API key)
 load_dotenv()
